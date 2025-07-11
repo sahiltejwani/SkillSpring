@@ -33,7 +33,7 @@ exports.resetPasswordToken = async (req, res) => {
         )
 
         // create URL
-        const url = `http://localhost:5173/update-password/${token}`;
+        const url = `https://skillspring-edtechplatform.onrender.com/update-password/${token}`;
 
         // send mail containing the url
         await mailSender(email,
