@@ -21,10 +21,26 @@ const OTPSchema = new mongoose.Schema({
 // function -> to send emails
 async function sendVerificationEmail(email, otp) {
     try {
+        console.log("========== EMAIL DEBUG ==========");
+        console.log("EMAIL:", email);
+        console.log("OTP:", otp);
+
+        const htmlBody = emailTemplate(otp);
+
+        console.log("Template Generated Successfully");
+        console.log("Template Length:", htmlBody.length);
+
         const mailResponse = await mailSender(email,
                                 "Verification Email from SkillSpring", 
                                 emailTemplate(otp)
                             );
+
+        if (mailResponse?.response) {
+            console.log("SMTP Response:", mailResponse.response);
+        }
+
+        console.log("================================");
+
         console.log("Email sent Successfully: ", mailResponse.response);
     }
     catch(err) {
