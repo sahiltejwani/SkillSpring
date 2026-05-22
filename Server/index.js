@@ -29,10 +29,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(
-    cors({
-        origin: "https://skillspring-edtechplatform.onrender.com",
-        credentials: true,
-    })
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://skillspring-edtechplatform.onrender.com",
+    ],
+    credentials: true,
+  })
 );
 
 app.use(
