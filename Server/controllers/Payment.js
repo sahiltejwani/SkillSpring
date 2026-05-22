@@ -46,6 +46,12 @@ exports.capturePayment = async (req, res) => {
     };
 
     try {
+        console.log("KEY:", process.env.RAZORPAY_KEY);
+        console.log(
+        "SECRET PRESENT:",
+        process.env.RAZORPAY_SECRET ? "YES" : "NO"
+        );
+        
         const paymentResponse = await instance.orders.create(options);
         return res.json({ success: true, data: paymentResponse });
     } 
